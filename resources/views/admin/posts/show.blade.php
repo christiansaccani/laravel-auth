@@ -4,6 +4,10 @@
 
 <div class="container py-5">
 
+  <div class="mb-4 text-center">
+    <img src="{{asset('storage/' . $post->cover_image)}}" alt="Copertina immagine">
+  </div>
+
   <h1>{{$post->title}}</h1>
 
   <p>

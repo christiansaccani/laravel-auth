@@ -35,6 +35,17 @@ class PostController extends Controller
         $request->validated();
 
         $newPost = new Post();
+
+        // controlliamo se nella request è presente un file in arrivo
+        if($request->hasFile('cover_image')) {
+            // ci salviamo il percorso dell'immagine in una variabile e contemporaneamente salviamo l'immagine nel server
+            // la cartella che abbiamo indicato nel metodo put() se è già presente viene utilizzata, altrimenti viene creata vuota
+            $path = Storage::disk('public')->put('post_images', $request->cover_image);
+    
+            // salvo il nuovo percorso che ho ottenuto dal salvataggio dell'immagine (Laravel per privacy e sicurezza cambia il nome del file)
+            $newPost->cover_image = $path;
+        }
+
         $newPost->fill($request->all());
         $newPost->save();
 
@@ -63,6 +74,15 @@ class PostController extends Controller
     public function update(StorePostRequest $request, Post $post)
     {
         $request->validated();
+
+        if($request->hasFile('cover_image')) {
+            // ci salviamo il percorso dell'immagine in una variabile e contemporaneamente salviamo l'immagine nel server
+            // la cartella che abbiamo indicato nel metodo put() se è già presente viene utilizzata, altrimenti viene creata vuota
+            $path = Storage::disk('public')->put('post_images', $request->cover_image);
+    
+            // salvo il nuovo percorso che ho ottenuto dal salvataggio dell'immagine (Laravel per privacy e sicurezza cambia il nome del file)
+            $post->cover_image = $path;
+        }
 
         $post->update($request->all());
 

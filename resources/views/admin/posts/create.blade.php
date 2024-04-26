@@ -30,6 +30,16 @@
             @enderror
         </div>
 
+        <div class="mb-4">
+            <label class="mb-2" for="cover_image">Immagine di copertina</label>
+            <input type="file" class="form-control @error('cover_image') is-invalid @enderror" name="cover_image">
+            @error('cover_image')
+            <div class="invalid-feedback">
+                {{$message}}
+            </div>
+            @enderror
+        </div>
+
         <button class="btn btn-primary">Aggiungi</button>
     </form>
 
