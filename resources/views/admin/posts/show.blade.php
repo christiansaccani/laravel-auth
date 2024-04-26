@@ -10,7 +10,11 @@
       {{$post->content}}
   </p>
 
-  <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">
+  <div class="mt-2"><a href="{{route('admin.posts.index')}}" class="btn btn-primary">Torna a Tutti i Post</a></div>
+
+  <div class="mt-2"><a href="{{route('admin.posts.edit', $post->id)}}" class="btn btn-warning">Modifica</a></div>
+
+  <button type="button" class="btn btn-danger mt-2" data-bs-toggle="modal" data-bs-target="#deleteModal">
   Elimina
   </button>
 
@@ -42,8 +46,6 @@
       </div>
     </div>
   </div>
-
-  <a href="{{route('admin.posts.index')}}" class="btn btn-primary">Torna a Tutti i Post</a>
 
 
 @endsection
