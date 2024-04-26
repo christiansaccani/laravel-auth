@@ -18,13 +18,11 @@
         </thead>
         <tbody>
 
-            
-            {{-- @dump($posts) --}}
             @foreach($posts as $post)
             <tr>
-                <th scope="row">{{$loop->index + 1}}</th>
-                <td>{{$post->title}}</td>
-                <td>{{$post->content}}</td>
+                <th class="align-middle" scope="row">{{$loop->index + 1}}</th>
+                <td class="align-middle">{{$post->title}}</td>
+                <td class="align-middle">{{$post->content}}</td>
                 <td><a href="{{route('admin.posts.show', $post->id)}}" class="btn btn-info">Mostra</a></td>
                 <td><a href="{{route('admin.posts.edit', $post->id)}}" class="btn btn-warning">Modifica</a></td>
             </tr>

@@ -38,7 +38,7 @@ class PostController extends Controller
         $newPost->fill($request->all());
         $newPost->save();
 
-        return redirect()->route('admin.index');
+        return redirect()->route('admin.posts.index');
     }
 
     /**
@@ -65,8 +65,8 @@ class PostController extends Controller
         $request->validated();
 
         $post->update($request->all());
-        
-        return redirect()->route('admin.posts.index');
+
+        return redirect()->route('admin.posts.show', $post->id);
     }
 
     /**
@@ -74,6 +74,8 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        //
+        $post->delete();
+
+        return redirect()->route('admin.posts.index');
     }
 }

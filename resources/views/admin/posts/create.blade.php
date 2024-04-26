@@ -32,6 +32,8 @@
 
         <button class="btn btn-primary">Aggiungi</button>
     </form>
+
+    <a href="{{route('admin.posts.index')}}" class="btn btn-primary mt-2">Torna a Tutti i Post</a>
 </div>
 
 @endsection
