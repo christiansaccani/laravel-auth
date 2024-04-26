@@ -32,7 +32,7 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
-// per gestire tante rotte insieme sotto lo stesso middleware e raggrupparle con elementi comuni
+// rotta per pagina di amministrazione
 Route::middleware(['auth', 'verified'])
         ->name('admin.')
         ->prefix('admin')
@@ -44,10 +44,6 @@ Route::middleware(['auth', 'verified'])
                 
             Route::get('/', [DashboardController::class, 'index'])->name('index');
 
-            Route::get('/users', [DashboardController::class, 'users'])->name('users');
-
-
-            // rotte di risorsa per i post
-            Route::resource('posts', PostController::class);
+            route::resource('posts', PostController::class);
         }
 );
