@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -31,7 +32,7 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
-// rotta per pagina di amministrazione
+// per gestire tante rotte insieme sotto lo stesso middleware e raggrupparle con elementi comuni
 Route::middleware(['auth', 'verified'])
         ->name('admin.')
         ->prefix('admin')
@@ -42,5 +43,11 @@ Route::middleware(['auth', 'verified'])
                 // tutti i loro url inizino con "admin/"
                 
             Route::get('/', [DashboardController::class, 'index'])->name('index');
+
+            Route::get('/users', [DashboardController::class, 'users'])->name('users');
+
+
+            // rotte di risorsa per i post
+            Route::resource('posts', PostController::class);
         }
 );
